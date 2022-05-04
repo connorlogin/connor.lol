@@ -20,7 +20,7 @@
   overflow-y: visible;
   margin-bottom: 1em;
   text-rendering: optimizeLegibility;
-  font-size: calc(0.8em + 0.25vw);
+  font-size: calc(0.75em + 0.25vw);
 }
 .card__side {
   flex-shrink: 0;
@@ -43,10 +43,10 @@
   color: black;
 }
 .card__url {
-  color: #bbb;
+  color: #aaa;
   text-decoration: none;
   margin-top: 0.5em;
-  font-weight: 700;
+  font-weight: 500;
 }
 .card__emoji {
   position: absolute;
@@ -95,7 +95,7 @@
   color: white;
   margin-top: 0.75em;
   padding: 0.5em 1em;
-  font-size: 1.2em;
+  font-size: 1.1em;
   border-radius: 0.25em;
   background: black;
 }
