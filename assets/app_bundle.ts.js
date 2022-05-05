@@ -451,8 +451,8 @@ function render1() {
 function unrender1() {
     oe(null, document.body);
 }
-function setFrontend(frontend = sessionStorage.getItem("frontend") || "vanilla") {
-    sessionStorage.setItem("frontend", frontend);
+function setFrontend(frontend = localStorage.getItem("frontend") || "vanilla") {
+    localStorage.setItem("frontend", frontend);
     if (frontend === "preact") {
         unrender();
         render1();
