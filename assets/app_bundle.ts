@@ -4,9 +4,9 @@ import * as preact from "./preact.tsx";
 // The entrypoint app is a simple frontend switcher powered by CustomEvents
 
 function setFrontend(
-  frontend = sessionStorage.getItem("frontend") || "vanilla",
+  frontend = localStorage.getItem("frontend") || "vanilla",
 ) {
-  sessionStorage.setItem("frontend", frontend);
+  localStorage.setItem("frontend", frontend);
 
   if (frontend === "preact") {
     vanilla.unrender();
