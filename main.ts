@@ -1,4 +1,4 @@
-import { c } from "./deps.ts";
+import { cav as c } from "./deps.ts";
 
 const mainStack = c.stack({
   "*": c.assets(),

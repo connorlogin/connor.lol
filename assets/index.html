@@ -7,26 +7,29 @@
   <!-- TODO: SEO -->
 
   <link rel="stylesheet" href="./base.css">
-  <link rel="stylesheet" href="./index.css">
-  <script type="module" src="./index.bundle.js"></script>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app_bundle.ts.js"></script>
 
 </head><body>
 
   <main class="main">
     <header class="card">
-      <section class="card__side">
-        <h1 class="card__name">Connor Logan</h1>
+      <section>
+        <h1>Connor Logan</h1>
         <a class="card__url" href="https://connor.lol">https://connor.lol</a>
-        <div class="card__emoji"></div>
-        <p class="card__p">Software engineer specializing in<br><a class="card__bold"
-        target="_blank" href="https://typescriptlang.org">TypeScript</a> <span
-        class="card__accent">/</span> 
-        <a class="card__bold" target="_blank" href="https://deno.land">Deno</a> <span class="card__accent">/</span> <a class="card__bold" target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API">Web APIs</a></p>
+        <div class="card__emoji">⚡️</div>
+        <label class="push-down">Software engineer specializing in</label>
+        <div class="card__specialties">
+          <a target="_blank" href="https://typescriptlang.org">TypeScript</a>
+          <a target="_blank" href="https://deno.land">Deno</a>
+          <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API">Web APIs</a>
+        </div>
       </section>
 
-      <section class="card__side card__back">
-        <p class="card__p">Email<br><a class="card__bold" href="mailto:hey@connor.lol">hey@connor.lol</a></p>
-        <p class="card__p">connorlogin@</p>
+      <section>
+        <label>Email</label>
+        <a class="card__email" href="mailto:hey@connor.lol">hey@connor.lol</a>
+        <label class="push-down">connorlogin@</label>
         <div class="card__links">
           <a target="_blank" href="https://github.com/connorlogin">github.com</a>
           <a target="_blank" href="https://reddit.com/u/connorlogin">reddit.com</a>
@@ -38,9 +41,23 @@
     </header>
 
     <nav class="card-flip" aria-hidden="true">
-      <button onclick="flipCard('front')" disabled>About</button>
-      <button onclick="flipCard('back')">Connect</button>
+      <button tabindex="-1" disabled>About</button>
+      <button tabindex="-1">Connect</button>
     </nav>
+
+    <footer class="footer">
+      <a
+        target="_blank"
+        href="https://github.com/connorlogin/connor-lol"
+      >This card</a>
+      is powered by
+      <a target="_blank" href="https://github.com/connorlogin/cav">Cav</a>
+      and
+      <select value="vanilla">
+        <option value="vanilla">the DOM</option>
+        <option value="preact">Preact</option>
+      </select>
+    </footer>
   </main>
 
 </body></html>
