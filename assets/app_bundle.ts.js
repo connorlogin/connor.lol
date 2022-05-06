@@ -328,12 +328,7 @@ function A(_, n) {
 }
 const $1 = (sel)=>document.querySelector(sel)
 ;
-let flipped = false;
-function flip() {
-    flipped = !flipped;
-    render();
-}
-const main = document.body.querySelector("main");
+const main = $1("main");
 const card = $1(".card");
 const frontButton = $1(".card-flip button:first-child");
 const backButton = $1(".card-flip button:last-child");
@@ -345,6 +340,11 @@ uiSelect.oninput = ()=>{
         bubbles: true
     }));
 };
+let flipped = false;
+function flip() {
+    flipped = !flipped;
+    render();
+}
 function render() {
     if (main.parentElement !== document.body) {
         document.body.replaceChildren(main);
@@ -431,7 +431,9 @@ function App() {
     }, "This card"), "is powered by", Z("a", {
         target: "_blank",
         href: "https://github.com/connorlogin/cav"
-    }, "Cav"), "and", Z("select", {
+    }, "Cav"), "and", Z("label", {
+        class: "footer__frontend"
+    }, "Preact", Z("select", {
         value: "preact",
         onInput: (e24)=>{
             const target = e24.target;
@@ -441,9 +443,9 @@ function App() {
         }
     }, Z("option", {
         value: "vanilla"
-    }, "the DOM"), Z("option", {
+    }, "Vanilla JS"), Z("option", {
         value: "preact"
-    }, "Preact"))));
+    }, "Preact")))));
 }
 function render1() {
     oe(Z(App, null), document.body);
@@ -453,12 +455,15 @@ function unrender1() {
 }
 function setFrontend(frontend = localStorage.getItem("frontend") || "vanilla") {
     localStorage.setItem("frontend", frontend);
-    if (frontend === "preact") {
-        unrender();
-        render1();
-    } else {
-        unrender1();
-        render();
+    if (frontend !== "vanilla") unrender();
+    if (frontend !== "preact") unrender1();
+    switch(frontend){
+        case "preact":
+            render1();
+            break;
+        case "vanilla":
+        default:
+            render();
     }
 }
 setFrontend();

@@ -1,3 +1,33 @@
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+:root {
+  width: 100vw;
+  height: 100vh;
+  font-size: calc(12px + 0.25vw);
+  font-display: swap;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #f6f6f6;
+  color: #333;
+}
+
 .main {
   display: flex;
   align-items: flex-start;
@@ -193,13 +223,36 @@
   font-weight: 500;
   margin: 0 0.4em;
 }
-.footer select {
-  background: transparent;
-  border: 0;
-  border: 1px dashed #ccc;
+.footer__frontend {
+  display: block;
+  padding: 0.2em 1em 0.2em 0.2em;
   color: #999;
-  font: inherit;
+  border: 1px dashed #ccc;
+  position: relative;
   margin: 0 0.4em;
   font-weight: 500;
-  padding: 0.1em;
+}
+.footer__frontend select {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+.footer__frontend::after {
+  content: "▼";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 2.5em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 0.4em;
+  color: #bbb;
+  z-index: 0;
 }

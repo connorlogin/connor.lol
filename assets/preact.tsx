@@ -1,13 +1,9 @@
-// I'm pretty decent with React/Preact in addition to vanilla JS, and I wanted
-// to show that off somehow. It's pretty minimal but I added this duplicate
-// frontend and a frontend switching entrypoint that manages which frontend is
-// active, vanilla JS or Preact. Note: Preact for this website is definitely
-// overkill, but this is all for fun anyway. I'm planning on making this card do
-// more stuff in the future, so perhaps the Preact duplicate will prevail in the
-// end
-
 /** @jsx h */
 import { h, render as _render, useState } from "../browser_deps.ts";
+
+// I'm decent with Preact/React in addition to vanilla JS, and I wanted to show
+// that off somehow. This is a Preact replica of the interface from vanilla.ts
+// and index.html
 
 function cx(...classes: unknown[]): string {
   return classes.filter(c => c && typeof c === "string").join(" ");
@@ -66,15 +62,21 @@ function App() {
         is powered by
         <a target="_blank" href="https://github.com/connorlogin/cav">Cav</a>
         and
-        <select value="preact" onInput={e => {
-          const target = e.target as HTMLSelectElement;
-          self.dispatchEvent(new CustomEvent(`frontend:${target.value}`, {
-            bubbles: true,
-          }));
-        }}>
-          <option value="vanilla">the DOM</option>
-          <option value="preact">Preact</option>
-        </select>
+        <label class="footer__frontend">
+          Preact
+          <select
+            value="preact"
+            onInput={e => {
+              const target = e.target as HTMLSelectElement;
+              self.dispatchEvent(new CustomEvent(`frontend:${target.value}`, {
+                bubbles: true,
+              }));
+            }}
+          >
+            <option value="vanilla">Vanilla JS</option>
+            <option value="preact">Preact</option>
+          </select>
+        </label>
       </footer>
     </main>
   );

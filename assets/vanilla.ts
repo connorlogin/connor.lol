@@ -1,24 +1,12 @@
-// Sometimes you don't need fancy frontend frameworks to get a job done. The
-// vanilla HTML is sent right away in the index.html file, so this module
-// doesn't deal with constructing the DOM from scratch like preact.tsx
-
 import "../browser_deps.ts";
 const $ = (sel: string) => document.querySelector(sel);
 
-// State
-
-let flipped = false;
-
-// Actions
-
-function flip() {
-  flipped = !flipped;
-  render();
-}
+// The vanilla HTML is sent right away in the index.html file, so this module
+// doesn't deal with constructing the DOM from scratch like preact.tsx
 
 // Setup
 
-const main = document.body.querySelector("main")!;
+const main = $("main") as HTMLElement;
 const card = $(".card") as HTMLElement;
 const frontButton = $(".card-flip button:first-child") as HTMLButtonElement;
 const backButton = $(".card-flip button:last-child") as HTMLButtonElement;
@@ -32,6 +20,17 @@ uiSelect.oninput = () => {
     bubbles: true,
   }));
 };
+
+// State
+
+let flipped = false;
+
+// Actions
+
+function flip() {
+  flipped = !flipped;
+  render();
+}
 
 // State <-> DOM
 

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-  
+
   <title>connor.lol</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, height=device-height">
   <!-- TODO: SEO -->
 
-  <link rel="stylesheet" href="./base.css">
   <link rel="stylesheet" href="./style.css">
   <script type="module" src="./app_bundle.ts.js"></script>
 
@@ -16,8 +15,8 @@
     <header class="card">
       <section>
         <h1>Connor Logan</h1>
-        <a class="card__url" href="https://connor.lol">https://connor.lol</a>
         <div class="card__emoji">⚡️</div>
+        <a class="card__url" href="https://connor.lol">https://connor.lol</a>
         <label class="push-down">Software engineer specializing in</label>
         <div class="card__specialties">
           <a target="_blank" href="https://typescriptlang.org">TypeScript</a>
@@ -53,10 +52,13 @@
       is powered by
       <a target="_blank" href="https://github.com/connorlogin/cav">Cav</a>
       and
-      <select value="vanilla">
-        <option value="vanilla">the DOM</option>
-        <option value="preact">Preact</option>
-      </select>
+      <label class="footer__frontend">
+        Vanilla JS
+        <select value="vanilla">
+          <option value="vanilla">Vanilla JS</option>
+          <option value="preact">Preact</option>
+        </select>
+      </label>
     </footer>
   </main>
 
