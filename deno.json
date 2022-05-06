@@ -1,5 +1,0 @@
-{
-  "tasks": {
-    "start": "DEV=1 deno run --watch --unstable -A main.ts"
-  }
-}
