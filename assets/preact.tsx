@@ -34,9 +34,9 @@ function App() {
           <div class="card__links">
             <a target="_blank" href="https://github.com/connorlogin">github.com</a>
             <a target="_blank" href="https://reddit.com/u/connorlogin">reddit.com</a>
-            <a target="_blank" href="https://dev.to/connorlogin">dev.to</a>
+            {/* <a target="_blank" href="https://dev.to/connorlogin">dev.to</a>
             <a target="_blank" href="https://mastodon.online/@connorlogin">mastodon.online</a>
-            <a target="_blank" href="https://twitter.com/connorlogin">twitter.com</a>
+            <a target="_blank" href="https://twitter.com/connorlogin">twitter.com</a> */}
           </div>
         </section>
       </header>
