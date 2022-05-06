@@ -3,20 +3,29 @@
 -- and may require manual changes to the script to ensure changes are applied in the correct order.
 -- Please report an issue for any failure with the reproduction steps.
 
+REVOKE ALL ON TABLE public.sessions FROM anon;
+REVOKE ALL ON TABLE public.sessions FROM authenticated;
+REVOKE ALL ON TABLE public.sessions FROM postgres;
+REVOKE ALL ON TABLE public.sessions FROM service_role;
+GRANT ALL ON TABLE public.sessions TO anon;
+
+GRANT ALL ON TABLE public.sessions TO authenticated;
+
+GRANT ALL ON TABLE public.sessions TO postgres;
+
+GRANT ALL ON TABLE public.sessions TO service_role;
+
+ALTER TABLE IF EXISTS public.sessions
+    ALTER COLUMN id SET DEFAULT uuid_generate_v4();
+
+REVOKE ALL ON TABLE public.logs FROM anon;
 REVOKE ALL ON TABLE public.logs FROM authenticated;
 REVOKE ALL ON TABLE public.logs FROM postgres;
 REVOKE ALL ON TABLE public.logs FROM service_role;
+GRANT ALL ON TABLE public.logs TO anon;
+
 GRANT ALL ON TABLE public.logs TO authenticated;
 
 GRANT ALL ON TABLE public.logs TO postgres;
 
 GRANT ALL ON TABLE public.logs TO service_role;
-
-REVOKE ALL ON TABLE public.sessions FROM anon;
-REVOKE ALL ON TABLE public.sessions FROM postgres;
-REVOKE ALL ON TABLE public.sessions FROM service_role;
-GRANT ALL ON TABLE public.sessions TO postgres;
-
-GRANT ALL ON TABLE public.sessions TO anon;
-
-GRANT ALL ON TABLE public.sessions TO service_role;
