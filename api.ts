@@ -7,14 +7,29 @@ if (!cookieKey) throw new Error("Missing COOKIE_KEY");
 const base = c.rpcInit({
   keys: [cookieKey],
   ctx: async x => {
-    const sid = x.cookie.get("session", { signed: true });
-    const session = (
-      !sid ? await db.createSession()
-      : await db.readSession(sid)
-    );
+    let sid: number;
+    try {
+      sid = parseInt(x.cookie.get("session", { signed: true })!, 10);
+      if (isNaN(sid)) {
+        throw new Error("session id wasn't a number");
+      }
+    } catch {
+      sid = -1;
+    }
+
+    let session: db.Session;
+    if (sid !== -1) {
+      try {
+        session = await db.readSession(sid);
+      } catch {
+        session = await db.createSession();
+      }
+    } else {
+      session = await db.createSession();
+    }
 
     if (sid !== session.id) {
-      x.cookie.set("session", session.id, {
+      x.cookie.set("session", session.id.toString(), {
         signed: true,
         secure: !Deno.env.get("DEV"),
       });

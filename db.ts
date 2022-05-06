@@ -8,7 +8,7 @@ if (!supKey) throw new Error("Missing SUPABASE_KEY");
 const sup = supabase.createClient(supUrl, supKey);
 
 const sessionSchema = z.object({
-  id: z.string(),
+  id: z.number(),
   created_at: z.string(),
   data: z.object({
 
@@ -26,7 +26,7 @@ export async function createSession(): Promise<Session> {
   return sessionSchema.parse(data[0]);
 }
 
-export async function readSession(id: string): Promise<Session> {
+export async function readSession(id: number): Promise<Session> {
   const { data, error } = await sup.from("sessions").select("*").eq("id", id);
   if (error) {
     throw error;
@@ -36,7 +36,9 @@ export async function readSession(id: string): Promise<Session> {
 }
 
 export async function upsertSession(session: Session): Promise<void> {
-  const { error } = await sup.from("sessions").upsert(await sessionSchema.parse(session));
+  const { error } = await sup.from("sessions").upsert(
+    sessionSchema.parse(session),
+  );
   if (error) {
     throw error;
   }
