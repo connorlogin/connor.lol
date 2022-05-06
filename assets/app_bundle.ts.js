@@ -996,7 +996,6 @@ function unrender1() {
     oe(null, document.body);
 }
 const api = client("/api");
-await api.visit({});
 function setFrontend(frontend = localStorage.getItem("frontend") || "vanilla") {
     localStorage.setItem("frontend", frontend);
     if (frontend !== "vanilla") unrender();
@@ -1015,3 +1014,4 @@ self.addEventListener("frontend:vanilla", ()=>setFrontend("vanilla")
 );
 self.addEventListener("frontend:preact", ()=>setFrontend("preact")
 );
+api.visit({});
