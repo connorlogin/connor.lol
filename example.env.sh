@@ -3,7 +3,7 @@
 # for more info. In Deno Deploy, these environment variables need to be set
 # using Deploy's web interface
 
-export DEV=1
-export SUPABASE_URL= # supabase start -> Studio URL
+export DEV=1 # Comment this out in production
+export SUPABASE_URL= # supabase start -> API URL
 export SUPABASE_KEY= # supabase start -> service_role key
 export COOKIE_KEY=dev-cookie-key

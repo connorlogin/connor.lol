@@ -7,8 +7,6 @@ if (!supKey) throw new Error("Missing SUPABASE_KEY");
 
 const sup = supabase.createClient(supUrl, supKey);
 
-export type Session = z.infer<typeof sessionSchema>;
-
 const sessionSchema = z.object({
   id: z.string(),
   created_at: z.string(),
@@ -16,6 +14,8 @@ const sessionSchema = z.object({
 
   }),
 });
+
+export type Session = z.infer<typeof sessionSchema>;
 
 export async function createSession(): Promise<Session> {
   const { data, error } = await sup.from("sessions").insert({});
