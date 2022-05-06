@@ -1,2 +1,6 @@
 .DS_Store
-/assets/live-reload.js
+.env.sh
+
+# Supabase
+**/supabase/.branches
+**/supabase/.temp

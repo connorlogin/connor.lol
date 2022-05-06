@@ -1,5 +1,12 @@
 import * as vanilla from "./vanilla.ts";
 import * as preact from "./preact.tsx";
+import { client } from "../browser_deps.ts";
+import type { Api } from "../api.ts";
+
+const api = client<Api>("/api");
+
+// Log the visit straight away
+await api.visit({});
 
 // This uses events to switch between the duplicate frontends I've created for
 // this site
