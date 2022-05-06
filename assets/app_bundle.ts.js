@@ -403,16 +403,7 @@ function App() {
     }, "github.com"), Z("a", {
         target: "_blank",
         href: "https://reddit.com/u/connorlogin"
-    }, "reddit.com"), Z("a", {
-        target: "_blank",
-        href: "https://dev.to/connorlogin"
-    }, "dev.to"), Z("a", {
-        target: "_blank",
-        href: "https://mastodon.online/@connorlogin"
-    }, "mastodon.online"), Z("a", {
-        target: "_blank",
-        href: "https://twitter.com/connorlogin"
-    }, "twitter.com")))), Z("nav", {
+    }, "reddit.com")))), Z("nav", {
         class: "card-flip",
         "aria-hidden": "true"
     }, Z("button", {
