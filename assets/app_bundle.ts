@@ -5,8 +5,8 @@ import type { Api } from "../api.ts";
 
 const api = client<Api>("/api");
 
-// Log the visit straight away
-await api.visit({});
+// Start logging the visit straight away
+api.visit({}); // Don't await
 
 // This uses events to switch between the duplicate frontends I've created for
 // this site
