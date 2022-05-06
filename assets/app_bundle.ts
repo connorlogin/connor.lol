@@ -5,9 +5,6 @@ import type { Api } from "../api.ts";
 
 const api = client<Api>("/api");
 
-// Start logging the visit straight away
-api.visit({}); // Don't await
-
 // This uses events to switch between the duplicate frontends I've created for
 // this site
 
@@ -32,3 +29,6 @@ setFrontend();
 // When these events reach the window, it'll trigger a frontend switch
 self.addEventListener("frontend:vanilla", () => setFrontend("vanilla"));
 self.addEventListener("frontend:preact", () => setFrontend("preact"));
+
+// Log the visit
+api.visit({}); // Don't await
