@@ -9,8 +9,8 @@ export function postsPage() {
     `,
     body: /*html*/`
       ${nav({
-        active: "index",
-        current: "index",
+        active: "posts",
+        current: "posts",
       })}
 
       <header class="header tilt">
