@@ -23,4 +23,9 @@ const app = router({
   "hello-world": articlePage(),
 });
 
-serve(app);
+serve(async (req, conn) => {
+  const url = new URL(req.url);
+  const res = await app(req, conn);
+  console.log("Response etag:", url.pathname, "-", res.headers.get("etag"));
+  return res;
+});
