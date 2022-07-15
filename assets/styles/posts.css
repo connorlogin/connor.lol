@@ -1,0 +1,110 @@
+.header {
+  align-self: center;
+  display: grid;
+  font-size: var(--thumb-size);
+  grid-template-columns: 1em 1fr;
+  grid-template-rows: 0.65em 0.35em;
+  align-items: center;
+  gap: 0.1em 0.4em;
+  margin: 7.5rem 0 0.8em 0;
+}
+.header .name {
+  font-size: 0.5em;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-rendering: optimizeLegibility;
+  grid-area: 1 / 2 / 2 / 3;
+  align-self: flex-end;
+  text-align: right;
+}
+.header .tagline {
+  font-size: 0.25em;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.02em;
+  grid-area: 2 / 2 / 3 / 3;
+  align-self: flex-start;
+  padding-left: 0.15em;
+  opacity: 0.6;
+  display: none;
+}
+.header .tagline.show {
+  display: unset;
+}
+.header .avatar {
+  width: 100%;
+  height: auto;
+  grid-area: 1 / 1 / 3 / 2;
+  position: relative;
+  border-radius: 100%;
+  font-size: 0.10em;
+}
+
+.main {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 50em;
+  /* Extra right padding to accomadate the thumbnails */
+  padding: 0 2.75em 2.5em 2.5em;
+}
+
+.post {
+  /* FIXME: I shouldn't have done this first font-size. The layout is near
+  perfect but replicating it based around --thumb-size is now difficult because
+  I coupled it with this font-size from the get-go */
+  font-size: clamp(0.8em, 1em, 3vw);
+  flex-shrink: 0;
+  text-rendering: optimizeLegibility;
+  background: white;
+  width: 100%;
+  max-width: 32em;
+  padding: 2em;
+  margin: 1.5em auto;
+  border-radius: 2em;
+  position: relative;
+  box-shadow: 0 1em 2em #0000000B;
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+.post .thumb {
+  font-size: var(--thumb-size);
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: -0.3em;
+  right: -0.15em;
+  border-radius: 0.3em;
+  z-index: 1;
+  color: transparent;
+  user-select: none;
+}
+.post .thumb.gif {
+  z-index: 2;
+  visibility: hidden;
+}
+.post:hover .thumb.gif {
+  visibility: visible;
+}
+.post .title {
+  font-size: calc(0.25 * var(--thumb-size));
+  margin-bottom: 0.75em;
+  margin-right: 2.5em;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+.post .description {
+  font-size: calc(0.2 * var(--thumb-size));
+  line-height: 1.5;
+  opacity: 0.6;
+}
+.post .date {
+  position: absolute;
+  right: 1.25em;
+  bottom: -2em;
+  opacity: 0.5;
+  letter-spacing: 0.02em;
+}
