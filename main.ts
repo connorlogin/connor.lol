@@ -15,7 +15,6 @@ const app = router({
   "*": assets(),
   "": indexPage(),
   "about": aboutPage(),
-  
   "hello-blog": postPage(),
 });
 
