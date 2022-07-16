@@ -8,19 +8,19 @@ import {
 import {
   aboutPage,
   articlePage,
-  postsPage,
+  indexPage,
   projectsPage,
   socPage,
 } from "./pages/mod.ts";
 
 const app = router({
   "*": assets(),
-  "": postsPage(),
+  "": indexPage(),
   "about": aboutPage(),
   "projects": projectsPage(),
   "soc": socPage(),
   
-  "hello-world": articlePage(),
+  "hello-blog": articlePage(),
 });
 
 serve(app);

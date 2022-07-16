@@ -46,8 +46,8 @@ export function nav({ active, current }: {
     ${topNavLink({
       href: "/",
       cls: "tilt",
-      active: active === "posts",
-      current: current === "posts",
+      active: active === "index",
+      current: current === "index",
       text: "CL",
     })}
     ${topNavLink({
