@@ -6,7 +6,7 @@
   grid-template-rows: 0.65em 0.35em;
   align-items: center;
   gap: 0.1em 0.4em;
-  margin-top: 7.5rem;
+  margin-top: 7rem;
   margin-bottom: 0.5em;
 }
 .header .name {
@@ -68,9 +68,9 @@
   display: block;
 }
 .post .title {
-  margin-bottom: 0.6em;
+  margin-bottom: 0.4em;
   margin-right: 2.5em;
-  font-size: 2em;
+  font-size: 1.75em;
   font-weight: 900;
   letter-spacing: 0.02em;
 }

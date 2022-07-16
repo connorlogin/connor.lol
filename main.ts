@@ -7,20 +7,15 @@ import {
 } from "./deps.ts";
 import {
   aboutPage,
-  articlePage,
+  postPage,
   indexPage,
-  projectsPage,
-  socPage,
 } from "./pages/mod.ts";
 
 const app = router({
   "*": assets(),
   "": indexPage(),
   "about": aboutPage(),
-  "projects": projectsPage(),
-  "soc": socPage(),
-  
-  "hello-blog": articlePage(),
+  "hello-blog": postPage(),
 });
 
 serve(app);
