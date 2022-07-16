@@ -1,16 +1,16 @@
 
 import { page, nav } from "./_base.ts";
 
-export function postsPage() {
+export function indexPage() {
   return page({
     head: /*html*/`
       <title>Connor Logan</title>
-      <link rel="stylesheet" href="/styles/posts.css">
+      <link rel="stylesheet" href="/styles/index.css">
     `,
     body: /*html*/`
       ${nav({
-        active: "posts",
-        current: "posts",
+        active: "index",
+        current: "index",
       })}
 
       <header class="header tilt">
@@ -52,21 +52,9 @@ export function postsPage() {
       </header>
 
       <main class="main">
-        <a class="post" href="/hello-world">
-          <h1 class="title">Hello, world</h1>
-          <img
-            class="thumb"
-            alt="Meme"
-            src="/memes/hello-this-is-dog.jpg"
-            aria-hidden="true"
-          >
-          <img
-            class="thumb gif"
-            alt="Meme"
-            src="/memes/hello-this-is-dog.gif"
-            aria-hidden="true"
-          >
-          <p class="description">The one where I introduce this website and ramble about how I created it. (From scratch!)</p>
+        <a class="post" href="/hello-blog">
+          <h1 class="title">Hello, blog</h1>
+          <p class="description">The one where I introduce this website and the server framework it's built on</p>
           <time class="date">July ??, 2022</time>
         </a>
       </main>

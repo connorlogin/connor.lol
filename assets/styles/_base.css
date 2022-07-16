@@ -18,7 +18,6 @@
   --background-see-thru: var(--color-light-gray-see-thru);
   --nav-active-background: white;
   --text: var(--color-not-black);
-  --thumb-size: clamp(4em, 5.5em, 15vw);
 }
 
 html {
