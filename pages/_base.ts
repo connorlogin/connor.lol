@@ -59,3 +59,31 @@ export function nav({ active, current }: {
   </nav>
   `;
 }
+
+export function postPreview({ href, title, desc, date }: {
+  href?: string;
+  title?: string;
+  desc?: string;
+  date?: string;
+}) {
+  const wrap = (body: string) => (
+    // On the feed
+    href ? /*html*/`
+      <a class="post-preview" href="${href}">
+        ${body}
+      </a>
+    `
+    // Header on the post page
+    : /*html*/`
+      <header class="post-preview">
+        ${body}
+      </header>
+    `
+  );
+
+  return wrap(/*html*/`
+    <h1 class="title">${title}</h1>
+    <p class="desc">${desc}</p>
+    <time class="date">${date}</time>
+  `);
+}
