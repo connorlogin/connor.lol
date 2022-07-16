@@ -1,17 +1,17 @@
 
 import { page, nav } from "./_base.ts";
 
-export function projectsPage() {
+export function postPage() {
   return page({
     head: /*html*/`
-      <title>Projects &bull; Connor Logan</title>
+      <title>Hello, blog &bull; Connor Logan</title>
     `,
     body: /*html*/`
       ${nav({
-        active: "projects",
-        current: "projects",
+        active: "index",
+        // No current
       })}
-
+      
       <div class="construction">Under construction</div>
     `,
   });
