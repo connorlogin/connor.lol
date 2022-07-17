@@ -1,5 +1,5 @@
 
-import { page, nav } from "./_base.ts";
+import { page, nav, postPreview } from "./_base.ts";
 
 export function indexPage() {
   return page({
@@ -18,7 +18,6 @@ export function indexPage() {
         <p class="tagline show">Computer engineer</h1>
         <p class="tagline">Web developer</p>
         <p class="tagline">Tech tinkerer</p>
-        <p class="tagline">Open sourcerer</p>
         <p class="tagline">Problem creator</p>
         <p class="tagline">Problem solver</p>
         <p class="tagline">Forever student</p>
@@ -52,11 +51,12 @@ export function indexPage() {
       </header>
 
       <main class="main">
-        <a class="post" href="/hello-blog">
-          <h1 class="title">Hello, blog</h1>
-          <p class="description">The one where I introduce this website and the server framework it's built on</p>
-          <time class="date">July ??, 2022</time>
-        </a>
+        ${postPreview({
+          href: "/hello-blog",
+          title: "Hello, blog",
+          date: "July 16, 2022",
+          desc: "The one where I introduce this website and the server framework it's built on",
+        })}
       </main>
     `,
   });
