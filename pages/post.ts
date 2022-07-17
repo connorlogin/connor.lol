@@ -1,8 +1,11 @@
 
 import { page, nav, postPreview } from "./_base.ts";
 
-export function postPage({ content }: {
+export function postPage({ title, date, desc, content }: {
   content?: string;
+  title?: string;
+  date?: string;
+  desc?: string;
 }) {
   return page({
     head: /*html*/`
@@ -10,19 +13,14 @@ export function postPage({ content }: {
       <link rel="stylesheet" href="/styles/post.css">
     `,
     body: /*html*/`
-      ${nav({
-        active: "index",
-        // Don't set current
-      })}
+      ${nav({})}
       
       <main class="main">
-        ${postPreview({
-          title: "Hello, blog",
-          date: "July 16, 2022",
-          desc: "The one where I introduce this website and the server framework it's built on",
-        })}
+        ${postPreview({ title, date, desc })}
         
-        ${content}
+        <article class="content">
+          ${content}
+        </article>
       </main>
     `,
   });
