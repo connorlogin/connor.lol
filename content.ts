@@ -5,7 +5,7 @@ import {
   fs,
 } from "./deps.ts";
 
-const postsDir = "./posts";
+const contentDir = "./content";
 
 type Slug = string;
 
@@ -17,7 +17,7 @@ interface FrontMatter {
   desc: string;
 }
 
-interface Post extends FrontMatter {
+export interface Post extends FrontMatter {
   path: string;
   content: string;
 }
@@ -34,7 +34,7 @@ async function loadPosts() {
   // The posts folder structure doesn't matter, they're only ever identified by
   // the slug in their front-matter. An error is thrown if there's a conflict
   let contentSize = 0;
-  for await (const entry of fs.walk(postsDir)) {
+  for await (const entry of fs.walk(contentDir)) {
     if (
       !entry.isFile ||
       entry.name.startsWith("_") ||
@@ -65,13 +65,18 @@ async function loadPosts() {
       continue;
     }
   }
-  console.log("Size of all posts:", contentSize);
+  console.log("Content size:", contentSize);
 }
 loadPosts();
 
 (async () => {
-  for await (const _ of Deno.watchFs("./posts")) {
-    console.log(_.kind);
-    await loadPosts();
+  let lastEvent = 0;
+  for await (const _ of Deno.watchFs(contentDir)) {
+    const now = new Date().getTime();
+    if (now - lastEvent < 1000) {
+      continue;
+    }
+    lastEvent = now;
+    loadPosts();
   }
 })();

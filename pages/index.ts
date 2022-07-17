@@ -1,18 +1,31 @@
 
-import { page, nav, postPreview } from "./_base.ts";
+import { page } from "./_base.ts";
+import type { Post } from "../content.ts";
 
-export function indexPage() {
+function postPreview({ href, title, desc, date }: {
+  href?: string;
+  title?: string;
+  desc?: string;
+  date?: string;
+}) {
+  return /*html*/`
+    <a class="post-preview" href="${href}">
+      <h1 class="title">${title}</h1>
+      <time class="date">${date}</time>
+      <p class="desc">${desc}</p>
+    </a>
+  `;
+}
+
+export function indexPage({ posts }: {
+  posts?: Post[];
+}) {
   return page({
     head: /*html*/`
       <title>Connor Logan</title>
       <link rel="stylesheet" href="/styles/index.css">
     `,
     body: /*html*/`
-      ${nav({
-        active: "index",
-        current: "index",
-      })}
-
       <header class="header tilt">
         <h1 class="name">Connor Logan</h1>
         <p class="tagline show">Computer engineer</h1>
@@ -50,14 +63,10 @@ export function indexPage() {
         >
       </header>
 
-      <main class="main">
-        ${postPreview({
-          href: "/hello-blog",
-          title: "Hello, blog",
-          date: "July 16, 2022",
-          desc: "The one where I introduce this website and the server framework it's built on",
-        })}
-      </main>
+      <main class="main">${
+        posts?.map(p => postPreview({ ...p, href: "/" + p.slug })).join("") ||
+        ""
+      }</main>
     `,
   });
 }

@@ -8,15 +8,24 @@ import {
   serve,
   endpoint,
 } from "./deps.ts";
-import { aboutPage } from "./pages/about.ts";
 import { indexPage } from "./pages/index.ts";
 import { postPage } from "./pages/post.ts";
-import { getPost } from "./posts.ts";
+import { getPost } from "./content.ts";
 
 const app = router({
   "*": assets(),
-  "": indexPage(),
-  "about": aboutPage(),
+  "": endpoint(null, ({ res }) => {
+    // This is going inside an endpoint because the posts may not be loaded yet
+    // when the router is created
+    return res({
+      headers: { "content-type": "text/html" },
+      body: indexPage({
+        posts: [
+          getPost("hello-blog")!,
+        ],
+      }),
+    });
+  }),
   ":slug": endpoint(null, ({ param, res }) => {
     const post = getPost(param.slug);
     if (!post) {
